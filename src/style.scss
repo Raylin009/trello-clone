@@ -1,3 +1,60 @@
-h1 {
-  color: grey;
+html, body, h1, ul, li, div {
+  margin: 0px;
+  padding: 0px;
 }
+
+li {
+  list-style: none;
+}
+
+body {
+  background-color: #ECEEEE;
+}
+
+.container {
+  // background-color: #ffffff;
+  position: absolute;
+  top: 10vh;
+  left: 25px;
+  bottom: 10vh;
+  right: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 35px;
+}
+
+.board-title {
+  height: 30px;
+  font-weight: normal;
+  font-size: 1em;
+  text-align: center;
+}
+
+#Winnie {
+  .board-title{
+    color: #ffffff;
+    background-color: #8E6E95;
+  }
+}
+
+#Bob {
+  .board-title{
+    color: #ffffff;
+    background-color: #39A59C;
+  }
+}
+
+#Thomas {
+  .board-title{
+    color: #ffffff;
+    background-color: #344759;
+  }
+}
+
+#George {
+  .board-title{
+    color: #ffffff;
+    background-color: #E8741E;
+  }
+}
+
