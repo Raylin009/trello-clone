@@ -51,14 +51,17 @@ const App = () => {
     <div className="container">
       {megaList.map((list, index, arr) => (
         <Board 
+          first={index === 0}
+          last={index === arr.length - 1}
           key={`maga.${index}`}
-          mvLeft={(message) => index !== 0 ? mvMessage(message, index, index - 1) : console.log('left end')}
-          mvRight={(message) => index < arr.length -1 ? mvMessage(message, index, index + 1) : console.log('right end')}
+          mvLeft={(message) => index !== 0 ? mvMessage(message, index, index - 1) : null}
+          mvRight={(message) => index < arr.length -1 ? mvMessage(message, index, index + 1) : null}
           rmMessage={(message) => rmMessageToList(message, index)}
           addMessageToList={(message) => addMessageToList(message, index)}
           list={list}
         />
       ))}
+      
     </div>
   )
 };

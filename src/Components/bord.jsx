@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Board = ({ index, mvLeft, mvRight, rmMessage, addMessageToList, list}) => {
+const Board = ({ first, last, mvLeft, mvRight, rmMessage, addMessageToList, list}) => {
 
   const handleAddMessage = () => {
     const message = window.prompt('add something!');
@@ -18,8 +18,8 @@ const Board = ({ index, mvLeft, mvRight, rmMessage, addMessageToList, list}) => 
       <ul>
         {list.listContent.map((ele, i)=> 
         <li key={i}>
-          <button onClick={()=>mvLeft(ele)}>left</button>
-          <button onClick={()=>mvRight(ele)}>right</button>
+          <button hidden={first} onClick={()=>mvLeft(ele)}>left</button>
+          <button hidden={last} onClick={()=>mvRight(ele)}>right</button>
           <span>{ele}</span>
           <button onClick={()=>{handleDeleteMessage(ele)}}>X</button>
         </li>)}
