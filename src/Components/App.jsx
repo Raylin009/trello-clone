@@ -31,11 +31,29 @@ const App = () => {
       ...megaList.slice(listIndex + 1),
     ])
   };
+
+  const mvMessage = (message, ogListIndex, destListIndex) => {
+    const newOgList = megaList[ogListIndex].listContent.filter(ele => ele !== message);
+    const newDestList = [...megaList[destListIndex].listContent, message];
+    const temp = [
+      ...megaList.slice(0,ogListIndex),
+      {...megaList[ogListIndex], listContent: newOgList},
+      ...megaList.slice( ogListIndex + 1)
+    ]
+    addToMegaList([
+      ...temp.slice(0,destListIndex),
+      {...temp[destListIndex], listContent: newDestList},
+      ...temp.slice(destListIndex + 1),
+    ])
+  }
   
   return(  
     <div className="container">
-      {megaList.map((list, index) => (
+      {megaList.map((list, index, arr) => (
         <Board 
+          key={`maga.${index}`}
+          mvLeft={(message) => index !== 0 ? mvMessage(message, index, index - 1) : console.log('left end')}
+          mvRight={(message) => index < arr.length -1 ? mvMessage(message, index, index + 1) : console.log('right end')}
           rmMessage={(message) => rmMessageToList(message, index)}
           addMessageToList={(message) => addMessageToList(message, index)}
           list={list}
