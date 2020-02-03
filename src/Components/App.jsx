@@ -34,9 +34,13 @@ const App = () => {
   
   return(  
     <div className="container">
-      <Board rmMessage={(message) => rmMessageToList(message, 0)} addMessageToList={(message) => addMessageToList(message, 0)} list={megaList[0]} />
-      {/* {allLists.map(ele => <Board addMessage={handleAddMessage} key={ele.name} name={ele.name} content={ele.content}/>)} */}
-
+      {megaList.map((list, index) => (
+        <Board 
+          rmMessage={(message) => rmMessageToList(message, index)}
+          addMessageToList={(message) => addMessageToList(message, index)}
+          list={list}
+        />
+      ))}
     </div>
   )
 };
