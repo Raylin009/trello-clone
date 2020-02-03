@@ -1,27 +1,30 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 
-const Board = ({addMessage, name, content}) => {
-  // const [list, addToList] = useState(['item 1', 'item2'])
+const Board = ({rmMessage, addMessageToList, list}) => {
 
-  const handleAddCard = () => {
+  const handleAddMessage = () => {
     const message = window.prompt('add something!');
-    addToList([...list, message])
+    addMessageToList(message)
+  };
+
+  const handleDeleteMessage = message => {
+    rmMessage(message);
   }
 
 
   return (
-      <div id={`${name}`} className="board">
-      <h1 className="board-title">{name}</h1>
+    <div id={`${list.listName}`} className="board">
+      <h1 className="board-title">{list.listName}</h1>
       <ul>
-        {list.map((ele, index)=> 
+        {list.listContent.map((ele, index)=> 
         <li key={index}>
           <button onClick={()=>{handleMvLeft(message)}}>Left</button>
           <span>{ele}</span>
-          <button>Right</button>
+          <button onClick={()=>{handleDeleteMessage(ele)}}>X</button>
         </li>)}
       </ul>
-      <button onClick={handleAddCard}>Add card</button>
+      <button onClick={handleAddMessage}>Add card</button>
     </div>
     )
 };
